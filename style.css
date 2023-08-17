@@ -1,0 +1,26 @@
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.container{
+    display:flex;
+    flex-direction: column;
+    border: 1px solid;
+}
+button{
+    padding: 10px 20px;
+}
+.flexdiv{
+    flex:1;
+    display: flex;
+    /* border: solid 1px red; */
+    justify-content: center;
+    /* padding:10px; */
+}
+.pixel{
+    /* flex:1 1 0; */
+    /* border: 1px solid; */
+    width:10px;
+    height:10px;
+}
