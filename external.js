@@ -17,7 +17,7 @@ function setNewGrid(){
 }
 function changeBackground(e){
     if (this.classList.value === 'pixel'){
-        this.style.backgroundColor = 'black';
+        this.style.backgroundColor = 'hsl(0,0%,0%)';
     }
 }
 function formGrid(){
