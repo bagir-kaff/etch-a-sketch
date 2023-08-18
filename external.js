@@ -18,7 +18,10 @@ function setNewGrid(){
 }
 function changeBackground(e){
     if (this.classList.value === 'pixel'){
-        this.style.backgroundColor = `hsl(${coloring},0%,0%)`;
+      this.style.backgroundColor = `hsl(${coloring},100%,50%)`;
+      if(coloring === 360)
+        coloring = 0;
+      coloring++;
     }
 }
 function formGrid(){
