@@ -5,7 +5,9 @@ container.classList.add('container');
 const setSizeButton = document.querySelector('.size');
 setSizeButton.addEventListener('click',setNewGrid);
 let n = 16;
-let coloring = 0;
+let hueValue = 0;
+let alphaValue = 0;
+let lightValue = 50;
 
 function setNewGrid(){
   do{
@@ -18,10 +20,11 @@ function setNewGrid(){
 }
 function changeBackground(e){
     if (this.classList.value === 'pixel'){
-      this.style.backgroundColor = `hsl(${coloring},100%,50%)`;
-      if(coloring === 360)
-        coloring = 0;
-      coloring++;
+      // console(this)
+      this.style.backgroundColor = `hsla(${hueValue},100%,${lightValue}%,${alphaValue})`;
+      if(hueValue === 360)
+        hueValue = 0;
+      hueValue++;
     }
 }
 function formGrid(){
