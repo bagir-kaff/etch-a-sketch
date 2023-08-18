@@ -5,6 +5,7 @@ container.classList.add('container');
 const setSizeButton = document.querySelector('.size');
 setSizeButton.addEventListener('click',setNewGrid);
 let n = 16;
+let coloring = 0;
 
 function setNewGrid(){
   do{
@@ -17,7 +18,7 @@ function setNewGrid(){
 }
 function changeBackground(e){
     if (this.classList.value === 'pixel'){
-        this.style.backgroundColor = 'hsl(0,0%,0%)';
+        this.style.backgroundColor = `hsl(${coloring},0%,0%)`;
     }
 }
 function formGrid(){
