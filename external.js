@@ -6,14 +6,10 @@ setSizeButton.addEventListener('click',setNewGrid);
 const coloringButton = document.querySelector('.coloring')
 
 let n = 16;
-let hueValue = 0;
-let lightValue = 0;
 let colorIsEnabled = false;
-
-
 coloringButton.addEventListener('click',toggleColor);
 window.addEventListener('keydown',(e)=>{
-  if (e.code = 'KeyC')
+  if (e.code === 'KeyC')
     toggleColor()
 })
 
@@ -34,8 +30,25 @@ function setNewGrid(){
     setGrid();
 }
 function changeBackground(e){
+  // console.log(e)
+  let backColor = this.style.backgroundColor
+  // console.log('background color = ' + this.style.backgroundColor)
   if (this.classList.value === 'pixel'){
-    this.style.backgroundColor = `hsl(${hueValue},100%,${lightValue}%`;
+    if(!this.style.backgroundColor){
+      this.style.backgroundColor = `rgb(229.5, 229.5, 229.5)`
+      // console.log('ok')
+    }
+    else if(backColor !== 'rgb(0,0,0)'){
+      let array = backColor.slice(backColor.indexOf('(')+1,backColor.indexOf(')')).split(',')
+      for(let i=0;i<3&&(array[0]>0||array[1]>0||array[2]>0);i++){
+        array[i]= String(+array[i] - 25.5 )
+        console.log('ok')
+      }
+      let string = array.join()
+      console.log(string)
+      this.style.backgroundColor = `rgb(${string})`
+      console.log(this.style.backgroundColor)
+}
     if(colorIsEnabled){
       if(hueValue === 360)
         hueValue = 0;
