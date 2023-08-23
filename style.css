@@ -28,4 +28,5 @@ button{
 .pixel{
     /* border: 1px solid; */
     flex:1;
+    user-select: none;
 }
