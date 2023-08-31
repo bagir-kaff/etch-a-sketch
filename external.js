@@ -13,6 +13,7 @@ const rainbowButton = document.querySelector('.rainbow')
 const darkenButton = document.querySelector('.darken')
 const lightenButton = document.querySelector('.lighten')
 
+const buttons = document.querySelectorAll('button');
 let previousMode = 0
 let lightValue = 25.5
 let n = 16;//px
@@ -57,19 +58,31 @@ function checkMode(){
     console.log('idk, '+currentMode )
   }
 } 
-
+function enablingButton(className){
+  buttons.forEach((button)=>{
+    if(button.classList.value !== className)
+      button.classList.remove('enabled')
+    else if(button.classList.value === className){
+      button.classList.add('enabled')
+    }
+  })
+}
 function enableSolidColor(){
   currentMode = 0;
+  enablingButton(this.classList.value);
 }
 function enableRainbow(){
   // if(currentMode === 1)
   currentMode = 1;
+  enablingButton(this.classList.value);
 }
 function enableDarken(){
   currentMode = 2
+  enablingButton(this.classList.value);
 }
 function enableLighten(){
   currentMode = 3
+  enablingButton(this.classList.value);
 }
 function changeBackground(){
   if(!isActive){return;} //mousehover
