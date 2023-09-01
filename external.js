@@ -48,11 +48,15 @@ function setNewGrid(){
     if(resolInput === '' || resolInput === null)
     return;
     resolInput = Number(resolInput)
+    console.log('works' + resolInput)
+    n=resolInput
   }while(!(n>0 && n<=100)); //was at the end of dis function
   if(container.childNodes[0]){ // basicaly checks if container exist
     body.removeChild(container);
+    
   }
   setGrid();
+  console.log('works' + n)
   sizeInfoPanel.textContent = 'res: '+ n + 'px * '+n+'px';
 }
 function checkMode(){
