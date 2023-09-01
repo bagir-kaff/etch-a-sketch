@@ -6,10 +6,12 @@ const setSizeButton = document.querySelector('.size');
 setSizeButton.addEventListener('click',setNewGrid);
 const sizeInfoPanel = document.querySelector('.size-info')
 
-const colorPicker = document.querySelector('input[type=color]');
+const colorPickers = document.querySelectorAll('input[type=color]');
+colorPickers.forEach((colorPicker)=>colorPicker.addEventListener('blur', enableSolidColor))
 const solidColorButton = document.querySelector('.solid-color');
 
 const rainbowButton = document.querySelector('.rainbow')
+const colorNoiseButton = document.querySelector('.color-noise')
 const darkenButton = document.querySelector('.darken')
 const lightenButton = document.querySelector('.lighten')
 
@@ -21,17 +23,25 @@ let hueValue = 0;
 let hueAddition = 1;
 let currentMode = 0;
 let isActive = false;
+let mouseButton = 0; /// 0/2
 sizeInfoPanel.textContent = 'res: '+ n + 'px * '+n+'px';
 
-window.addEventListener('mousedown',()=>isActive = true, {capture: true})
+window.addEventListener('mousedown',(e)=>{
+  isActive = true
+  mouseButton = e.button
+},true)
 window.addEventListener('mouseup',()=>isActive = false)
 
-colorPicker.addEventListener('blur', enableSolidColor);
 solidColorButton.addEventListener('click',enableSolidColor);
+colorNoiseButton.addEventListener('click',enableColorNoise)
 rainbowButton.addEventListener('click',enableRainbow);
 darkenButton.addEventListener('click',enableDarken);
 lightenButton.addEventListener('click',enableLighten);
-
+/////////////////
+document.addEventListener('contextmenu', function(e) {
+  e.preventDefault();
+}, false);
+////////////////////////////
 function setNewGrid(){
   do{
     let resolInput = prompt('input resolution max 100')
@@ -54,6 +64,8 @@ function checkMode(){
     console.log('Mode: Darken'+currentMode)
  else if(currentMode ===3)
     console.log('Mode: Lighten'+currentMode)
+  else if (currentMode ===4)
+    console.log('Mode: colore noise'+currentMode)
   else{
     console.log('idk, '+currentMode )
   }
@@ -69,26 +81,35 @@ function enablingButton(className){
 }
 function enableSolidColor(){
   currentMode = 0;
-  enablingButton(this.classList.value);
+  enablingButton(solidColorButton.classList.value);
+}
+function enableColorNoise(){
+  currentMode=4
+  enablingButton(colorNoiseButton.classList.value)
 }
 function enableRainbow(){
   // if(currentMode === 1)
   currentMode = 1;
-  enablingButton(this.classList.value);
+  enablingButton(rainbowButton.classList.value);
 }
 function enableDarken(){
   currentMode = 2
-  enablingButton(this.classList.value);
+  enablingButton(darkenButton.classList.value);
 }
 function enableLighten(){
   currentMode = 3
-  enablingButton(this.classList.value);
+  enablingButton(lightenButton.classList.value);
 }
+let randomN;
 function changeBackground(){
+  // console.log('ngambang')
   if(!isActive){return;} //mousehover
   // checkMode()
   if(currentMode === 0){
-    this.style.backgroundColor = `${colorPicker.value}`
+    if (mouseButton === 0)
+      this.style.backgroundColor = `${colorPickers[0].value}`
+    else if(mouseButton ===2)
+    this.style.backgroundColor = `${colorPickers[1].value}`
   }
   else if(currentMode ===1) {
     this.style.backgroundColor = `hsl(${hueValue},100%,50%)`
@@ -115,6 +136,11 @@ function changeBackground(){
       let string = array.join()
       this.style.backgroundColor = `rgb(${string})`
     }
+  }
+  else if(currentMode ===4){
+    randomN = (Math.floor(Math.random()*256))
+    // console.log(randomN)
+    this.style.backgroundColor = `hsl(${randomN},100%,60%)`
   }
 }
 function formGrid(){
