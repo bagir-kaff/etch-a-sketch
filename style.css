@@ -1,3 +1,6 @@
+*{
+    font-family:  Arial;
+}
 body{
     display: flex;
     justify-content: center;
@@ -44,4 +47,9 @@ input{
 .pixel{
     flex:1;
     user-select: none;
+}
+.infobox{
+    border: 2px solid;
+    padding:5px;
+    margin:10px 0;
 }
