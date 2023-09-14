@@ -1,0 +1,7 @@
+this is a todo list for odin etch a sketch project,
+14 sep
+- Set size with range input
+
+- Add lower and upper hue clamp for colored noise
+- and rainbow mode
+good luck , future me
