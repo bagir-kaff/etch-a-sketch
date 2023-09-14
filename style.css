@@ -4,12 +4,30 @@
 body{
     display: flex;
     align-items: center;
+    justify-content: center;
+    padding:0 60px;
+    height: 100vh;
+    margin:0;
 }
 .box{
     margin:10px;
     display:flex;
     flex-direction: column;
     align-items: center;
+}
+.outer-container{
+    padding:20px;
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+.container{
+    display:flex;
+    flex-direction: column;
+    border: 1px solid;
+    height:400px;
+    min-width: 400px;
+    max-width: 400px;
 }
 .enabled{
     background-color: rgb(62,62,62);
@@ -30,13 +48,6 @@ button{
 input{
     width: 50px;
     height: 50px;
-}
-.container{
-    display:flex;
-    flex-direction: column;
-    border: 1px solid;
-    height:400px;
-    min-width: 400px;
 }
 .flexdiv{
     flex:1;
