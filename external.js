@@ -1,4 +1,7 @@
 const body = document.querySelector('body');
+const outerContainer = document.createElement('div');
+outerContainer.classList.add('outer-container')
+body.appendChild(outerContainer);
 let container = document.createElement('div');
 container.classList.add('container');//it was written with const
 const box = document.querySelector('.box');
@@ -63,7 +66,7 @@ function setNewGrid(){
     n=resolInput
   }while(!(n>0 && n<=100)); //was at the end of dis function
   if(container.childNodes[0]){ // basicaly checks if container exist
-    body.removeChild(container);
+    outerContainer.removeChild(container);
     
   }
   setGrid();
@@ -183,6 +186,6 @@ function setGrid(){
     container.classList.add('container');
   }
   formGrid();
-  body.appendChild(container);
+  outerContainer.appendChild(container);
 }
 setGrid();
