@@ -7,16 +7,15 @@ setSizeButton.addEventListener('click',setNewGrid);
 const sizeInfoPanel = document.querySelector('.size-info')
 
 const colorPickers = document.querySelectorAll('input[type=color]');
-colorPickers.forEach((colorPicker)=>colorPicker.addEventListener('blur', enableSolidColor))
+colorPickers.forEach((colorPicker)=>colorPicker.addEventListener('click', enableSolidColor))
 const solidColorButton = document.querySelector('.solid-color');
-
 const rainbowButton = document.querySelector('.rainbow')
 const colorNoiseButton = document.querySelector('.color-noise')
 const darkenButton = document.querySelector('.darken')
 const lightenButton = document.querySelector('.lighten')
 
 let previousMode = 0
-let lightValue = 25.5
+let lightValue = 25.5 //255/10 atau 10%
 let n = 16;//px
 let hueValue = 0;
 let hueAddition = 1;
@@ -24,10 +23,6 @@ let currentMode = 0;
 let isActive = false;
 let mouseButton = 0; /// 0/2
 sizeInfoPanel.textContent = 'res: '+ n + 'px * '+n+'px';
-//
-//
-//
-//
 //
 const buttons = document.querySelectorAll('button');
 window.addEventListener('keydown',e=>{
@@ -132,9 +127,9 @@ function changeBackground(){
     this.style.backgroundColor = `${colorPickers[1].value}`
   }
   else if(currentMode ===1){
-    randomN = (Math.floor(Math.random()*256))
+    randomN = (Math.floor(Math.random()*360))
     // console.log(randomN)
-    this.style.backgroundColor = `hsl(${randomN},100%,60%)`
+    this.style.backgroundColor = `hsl(${randomN},100%,50%)`
   }
   else if(currentMode ===2) {
     this.style.backgroundColor = `hsl(${hueValue},100%,50%)`
